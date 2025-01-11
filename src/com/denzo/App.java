@@ -33,7 +33,6 @@ public class App {
                     deleteLink();
                     break;
                 case "5":
-                    // Новая функция смены пользователя
                     switchUser();
                     break;
                 case "6":
@@ -87,7 +86,6 @@ public class App {
         }
     }
 
-    // Новая функция для смены пользователя
     private static void switchUser() {
         System.out.println("\n--- Смена пользователя ---");
         chooseUser();
@@ -192,7 +190,7 @@ public class App {
         }
     }
 
-    // Пример метода удаления ссылки (только владелец может удалить)
+    // Метод удаления ссылки удаления ссылки (только владелец может удалить)
     private static void deleteLink() {
         System.out.print("Введите короткий URL для удаления: ");
         String shortUrl = scanner.nextLine().trim();

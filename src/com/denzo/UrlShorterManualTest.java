@@ -22,10 +22,7 @@ public class UrlShorterManualTest {
         }
     }
 
-    /**
-     * Тестирует создание короткой ссылки:
-     * - Проверяет, что короткая ссылка начинается с "denzo.com/"
-     */
+    // Проверяет, что короткая ссылка начинается с "denzo.com/"
     public static boolean testBuildShortUrl() {
         Notifier notifier = new ConsoleNotifier();
         UrlShorter urlShorter = new UrlShorter(notifier);
@@ -42,10 +39,7 @@ public class UrlShorterManualTest {
         }
     }
 
-    /**
-     * Тестирует редактирование лимита переходов:
-     * Проверяет, что владелец может изменить лимит, а новый лимит влияет на поведение ссылки.
-     */
+    // Тестирует редактирование лимита переходов: Проверяет, что владелец может изменить лимит, а новый лимит влияет на поведение ссылки.
     public static boolean testEditLimit() {
         Notifier notifier = new ConsoleNotifier();
         UrlShorter urlShorter = new UrlShorter(notifier);
@@ -80,10 +74,7 @@ public class UrlShorterManualTest {
         return passed;
     }
 
-    /**
-     * Тестирует удаление ссылки:
-     * После удаления попытка восстановления должна вернуть null.
-     */
+    //Тестирует удаление ссылки: После удаления попытка восстановления должна вернуть null.
     public static boolean testDeleteLink() {
         Notifier notifier = new ConsoleNotifier();
         UrlShorter urlShorter = new UrlShorter(notifier);
@@ -105,10 +96,7 @@ public class UrlShorterManualTest {
         return true;
     }
 
-    /**
-     * Тестирует администрирование – проверяет, что изменение или удаление ссылки не доступно пользователю,
-     * который не является её создателем.
-     */
+    // Тестирует администрирование – проверяет, что изменение или удаление ссылки не доступно пользователю,который не является её создателем.
     public static boolean testAdminAccess() {
         Notifier notifier = new ConsoleNotifier();
         UrlShorter urlShorter = new UrlShorter(notifier);
@@ -132,10 +120,8 @@ public class UrlShorterManualTest {
         }
     }
 
-    /**
-     * Тестирует повторное создание ссылки:
-     * При повторном создании для одного и того же длинного URL генерируются разные короткие URL.
-     */
+    //Тестирует повторное создание ссылки:
+    // При повторном создании для одного и того же длинного URL генерируются разные короткие URL.
     public static boolean testRepeatCreation() {
         Notifier notifier = new ConsoleNotifier();
         UrlShorter urlShorter = new UrlShorter(notifier);
@@ -154,10 +140,8 @@ public class UrlShorterManualTest {
         }
     }
 
-    /**
-     * Тестирует смену пользователя: создаются ссылки для двух разных пользователей.
-     * Проверяется, что ссылки принадлежат разным пользователям (ограничения администрирования).
-     */
+    // Тестирует смену пользователя: создаются ссылки для двух разных пользователей. Проверяется, что ссылки принадлежат разным пользователям (ограничения администрирования).
+
     public static boolean testSwitchUser() {
         Notifier notifier = new ConsoleNotifier();
         UrlShorter urlShorter = new UrlShorter(notifier);

@@ -2,7 +2,6 @@ package com.denzo;
 
 import java.time.LocalDateTime;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class UrlShorter {
     private final String ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -27,9 +26,8 @@ public class UrlShorter {
         this.notifier = new ConsoleNotifier();
     }
 
-    /**
-     * Генерирует короткую ссылку с префиксом "denzo.com/".
-     */
+    //Генерирует короткую ссылку с префиксом "denzo.com/".
+
     public String buildShortUrl(String longUrl, UUID userUuid, int limit, int lifetimeHours) {
         String shortUrl;
         do {
@@ -44,9 +42,8 @@ public class UrlShorter {
         return "denzo.com/" + shortUrl;
     }
 
-    /**
-     * Восстанавливает длинный URL по короткой ссылке.
-     */
+    //Восстанавливает длинный URL по короткой ссылке.
+
     public String restoreLongUrl(String shortUrl) {
         shortUrl = normalizeShortUrl(shortUrl);
         ShortLink shortLink = shortUrlMap.get(shortUrl);
@@ -68,10 +65,7 @@ public class UrlShorter {
         return shortLink.getLongUrl();
     }
 
-    /**
-     * Редактирует лимит переходов для ссылки.
-     * Изменение допустимо только владельцем ссылки.
-     */
+    //Редактирует лимит переходов для ссылки. Изменение допустимо только владельцем ссылки.
     public boolean editLimit(String shortUrl, int newLimit, UUID requesterUuid) {
         if (newLimit <= 0) {
             System.out.println("Новый лимит должен быть положительным числом.");
@@ -92,9 +86,7 @@ public class UrlShorter {
         return true;
     }
 
-    /**
-     * Удаляет ссылку. Удаление доступно только владельцу.
-     */
+    // Удаляет ссылку. Удаление доступно только владельцу.
     public boolean deleteLink(String shortUrl, UUID requesterUuid) {
         shortUrl = normalizeShortUrl(shortUrl);
         ShortLink link = shortUrlMap.get(shortUrl);
@@ -126,9 +118,7 @@ public class UrlShorter {
         return shortUrl;
     }
 
-    /**
-     * Генерирует случайную строку фиксированной длины, которая используется как код короткой ссылки.
-     */
+    // Генерирует случайную строку фиксированной длины, которая используется как код короткой ссылки.
     private String generateRandomShortUrl() {
         StringBuilder sb = new StringBuilder(SHORT_URL_LENGTH);
         for (int i = 0; i < SHORT_URL_LENGTH; i++) {
@@ -138,9 +128,7 @@ public class UrlShorter {
         return sb.toString();
     }
 
-    /**
-     * Очищает просроченные ссылки.
-     */
+    // Очищает просроченные ссылки.
     public void cleanupExpiredLinks() {
         LocalDateTime now = LocalDateTime.now();
         Iterator<Map.Entry<String, ShortLink>> iterator = shortUrlMap.entrySet().iterator();
@@ -155,16 +143,12 @@ public class UrlShorter {
         }
     }
 
-    /**
-     * Возвращает объект ShortLink по короткому URL.
-     */
+    // Возвращает объект ShortLink по короткому URL.
     public ShortLink getShortLinkByShortUrl(String shortUrl) {
         return shortUrlMap.get(normalizeShortUrl(shortUrl));
     }
 
-    /**
-     * Возвращает список коротких ссылок для заданного пользователя.
-     */
+    //Возвращает список коротких ссылок для заданного пользователя.
     public List<ShortLink> getShortLinksByUserUuid(UUID userUuid) {
         return userLinksMap.getOrDefault(userUuid, Collections.emptyList());
     }
